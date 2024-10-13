@@ -1,0 +1,129 @@
+#pricing {
+  background-color: #1eca8b;
+}
+
+#pricing .row {
+  justify-content: center;
+}
+
+#pricing .container{
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+.pricing-wave-image {
+  width: 100%;
+  height: auto;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.pricing-section {
+  padding: 60px 0;
+}
+
+.pricing-title-wrapper {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.pricing-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  margin: 0;
+  display: block;
+  color:#ffffff;
+  font-weight:500
+}
+
+.pricing-left {
+  text-align: center;
+}
+
+
+.pricing-image {
+  max-width: 100%;
+  height: auto;
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pricing-card {
+  margin: 20px 0 !important;
+  border: none !important;
+  border-radius: 1rem !important;
+  transition: transform 0.2s;
+}
+.pricing-card:hover {
+  transform: translateY(-15px);
+}
+
+.pricing-card-title {
+  font-size:1.5rem !important;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.pricing-price {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #1eca8b;
+}
+
+.pricing-price-description {
+  font-size: 0.875rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #999;
+}
+
+.pricing-cta {
+  color: #1eca8b !important;
+  font-weight: 500 !important;
+  border-color:#1eca8b !important;
+}
+
+
+.pricing-cta:hover {
+  color: #ffffff !important;
+  background-color: #1eca8b !important;
+  border-color:#1eca8b !important;
+}
+
+
+.pricing-features {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pricing-features h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.pricing-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pricing-features ul li {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+
+@media screen and (max-width: 500px) {
+  .pricing-wave-image {
+    margin-top: -15px;
+  }
+}

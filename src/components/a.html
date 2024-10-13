@@ -1,0 +1,291 @@
+import React, { useState } from "react";
+import Popup from "reactjs-popup"; // Import reactjs-popup for modal functionality
+import "./Preference.css";
+import { Container, Row, Col, Button, ProgressBar } from "react-bootstrap";
+import Step1SelectStock from "./Step1SelectStock";
+import Step2PreferenceMethod from "./Step2PreferenceMethod";
+import Step3Pricing from "./Step3Pricing";
+import { GoogleLogin } from '@react-oauth/google';
+import {jwtDecode} from 'jwt-decode';
+
+
+const Preference = () => {
+  const [step, setStep] = useState(1);
+  const [user, setUser] = useState(null);
+  const [openPopup, setOpenPopup] = useState(false); // State to control popup visibility
+
+  const handleSubmitClick = () => {
+    const userData = localStorage.getItem("user");
+
+    if (userData) {
+      console.log("Data PRESENT");
+    } else {
+      console.log("Data NOT PRESENT");
+      setOpenPopup(true);
+    }
+  };
+
+  const handleNext = () => {
+    setStep((prevStep) => Math.min(prevStep + 1, 3));
+  };
+
+  const handlePrevious = () => {
+    setStep((prevStep) => Math.max(prevStep - 1, 1));
+  };
+
+  const handleLoginSuccess = (credentialResponse) => {
+    console.log("Login Success:", credentialResponse.credential);
+
+    const decodedUser = jwtDecode(credentialResponse.credential);
+    setUser(decodedUser);
+    
+    localStorage.setItem('user', JSON.stringify(decodedUser));
+    setOpenPopup(false);
+  };
+
+  const steps = [
+    {
+      step: 1,
+    },
+    {
+      step: 2,
+    },
+    {
+      step: 3,
+    },
+  ];
+
+  const totalSteps = steps.length;
+
+  return (
+    <Container className="preference-container mt-4">
+      <Row className="step-top mb-4 position-relative">
+        <Col>
+          <h2
+            className="text-center"
+            style={{ Color: "white", fontSize: "1.6rem" }}
+          >
+            Setup Your Preferences
+          </h2>
+          <div className="stepper">
+            <div className="progress-container">
+              <ProgressBar now={(step / 3) * 100} />
+            </div>
+            {steps.map(({ step: stepNum }) => (
+              <div className="step-wrapper" key={stepNum}>
+                <div
+                  className={`step ${
+                    step >= stepNum ? "completed" : "incomplete"
+                  }`}
+                >
+                  {step > stepNum ? (
+                    <div className="checkmark">✓</div>
+                  ) : (
+                    <div className="step-count">{stepNum}</div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Col>
+      </Row>
+
+      <Row className="step-middle">
+        <Col>
+          {step === 1 && <Step1SelectStock />}
+          {step === 2 && <Step2PreferenceMethod />}
+          {step === 3 && <Step3Pricing />}
+        </Col>
+      </Row>
+      <Row className="step-bottom">
+        <Col className="text-center">
+          {step > 1 && (
+            <Button
+              variant="outline-dark"
+              onClick={handlePrevious}
+              className="back-button dark"
+            >
+              Back
+            </Button>
+          )}
+
+          {step < totalSteps && (
+            <Button
+              variant="dark"
+              onClick={handleNext}
+              className="ml-2"
+            >
+              Next
+            </Button>
+          )}
+
+          {step === totalSteps && (
+            <Button
+              variant="dark"
+              onClick={handleSubmitClick}
+              className="ml-2"
+            >
+              Submit
+            </Button>
+          )}
+        </Col>
+      </Row>
+
+    </Container>
+  );
+};
+
+export default Preference;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState } from "react";
+import "./Preference.css";
+import { Container, Row, Col, Button, ProgressBar } from "react-bootstrap";
+import Step1SelectStock from "./Step1SelectStock";
+import Step2PreferenceMethod from "./Step2PreferenceMethod";
+import Step3Pricing from "./Step3Pricing";
+import Step4Submit from "./Step4Submit";
+
+const Preference = () => {
+  const [step, setStep] = useState(1);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmitClick = () => {    
+    setIsSubmitted(true);
+    console.log(isSubmitted);
+  };
+
+  const handleNext = () => {
+    setStep((prevStep) => Math.min(prevStep + 1, 3));
+  };
+
+  const handlePrevious = () => {
+    setStep((prevStep) => Math.max(prevStep - 1, 1));
+  };
+
+  const steps = [
+    {
+      step: 1,
+    },
+    {
+      step: 2,
+    },
+    {
+      step: 3,
+    },
+  ];
+
+  const totalSteps = steps.length;
+
+  return (
+    <Container className="preference-container mt-4">
+      {!isSubmitted && (
+          <Row className="step-top mb-4 position-relative">
+            <Col>
+              <h2
+                className="text-center"
+                style={{ color: "white", fontSize: "1.6rem" }}
+              >
+                Setup Your Preferences
+              </h2>
+              <div className="stepper">
+                <div className="progress-container">
+                  <ProgressBar now={(step / totalSteps) * 100} />
+                </div>
+                {steps.map(({ step: stepNum }) => (
+                  <div className="step-wrapper" key={stepNum}>
+                    <div
+                      className={`step ${
+                        step >= stepNum ? "completed" : "incomplete"
+                      }`}
+                    >
+                      {step > stepNum ? (
+                        <div className="checkmark">✓</div>
+                      ) : (
+                        <div className="step-count">{stepNum}</div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Col>
+          </Row>
+      )}
+
+      <Row className="step-middle">
+        <Col>
+          {!isSubmitted ? (
+            <>
+              {step === 1 && <Step1SelectStock />}
+              {step === 2 && <Step2PreferenceMethod />}
+              {step === 3 && <Step3Pricing />}
+            </>
+          ) : (
+            <Step4Submit />
+          )}
+        </Col>
+      </Row>
+
+      {!isSubmitted && (
+          <Row className="step-bottom">
+            <Col className="text-center">
+              <Button
+                variant="outline-dark"
+                onClick={handlePrevious}
+                disabled={step === 1}
+                className="back-button dark"
+              >
+                Back
+              </Button>
+
+              {step < totalSteps && (
+                <Button
+                  variant="dark"
+                  onClick={handleNext}
+                  disabled={step === totalSteps}
+                  className="ml-2"
+                >
+                  Next
+                </Button>
+              )}
+
+              {step === totalSteps && (
+                <Button variant="dark" onClick={handleSubmitClick} className="ml-2">
+                  Submit
+                </Button>
+              )}
+            </Col>
+          </Row>
+      )}
+    </Container>
+  );
+};
+
+export default Preference;

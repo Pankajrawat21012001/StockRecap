@@ -1,0 +1,59 @@
+.step-content {
+  background-color: #1eca8b;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  height: 99%;
+}
+
+.step-content h3 {
+  font-size: 1.5rem !important;
+  color: #ffffff !important;
+}
+
+.step-content p {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 2rem !important;
+}
+
+.mb-3 {
+  margin-bottom: 1rem !important;
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+}
+
+.form-control {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-right: none;
+}
+
+.search-add-button{
+    background-color: rgb(0, 0, 0) !important;
+    color: #ffffff !important;
+}
+
+
+.selected-stocks {
+  margin-top: 10px;
+}
+
+.selected-stocks .badge {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 10px;
+  font-size: 14px;
+  color: #000000;
+  background-color: #ffffff !important;
+}
+
+.remove-stock {
+  cursor: pointer;
+  margin-left: 5px;
+}

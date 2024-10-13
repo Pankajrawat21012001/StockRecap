@@ -1,0 +1,22 @@
+.step-content {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .step-content h3 {
+    color: #000000;
+    margin-bottom: 15px;
+  }
+  
+  .step-content p {
+    font-size: 16px;
+    color: #000000;
+  }
+  
+  .step-content strong {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: larger;
+  }
+  

@@ -1,0 +1,135 @@
+.preference-container {
+  width: 100% !important;
+  max-width: 500px !important;
+  margin: 1rem auto;
+  padding: 0 16px;
+  background-color: #1eca8b;
+  border-radius: 1rem;
+}
+
+.step-top {
+  height: 15vh;
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+.step-top h2 {
+  padding: 10px 0px;
+  font-size: x-large;
+  color: white;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.progress-container {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  width: 70%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.progress-container .progress {
+  height: 5px;
+  background-color: transparent;
+}
+
+.progress-bar {
+  justify-content: center;
+  overflow: hidden;
+  background-color: #000000 !important;
+  transition: var(--bs-progress-bar-transition);
+  z-index: 1 !important;
+}
+
+.stepper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.step-wrapper {
+  display: flex;
+  z-index: 2;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  position: relative;
+}
+
+.step {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: bold;
+  position: relative;
+}
+
+.step.completed {
+  background-color: #000000;
+  color: #fff;
+}
+
+.checkmark {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.step-wrapper.completed::after {
+  background-color: #1eca8b;
+}
+
+.step-wrapper:last-child::after {
+  display: none;
+}
+
+.step-middle {
+  height: auto;
+  min-height: 50vh;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+.step-bottom {
+  height: 10vh;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  align-items: center;
+  justify-content: end;
+  text-align: center;
+}
+
+.next-button{
+  background-color: rgb(0, 0, 0) !important;
+  color: #ffffff !important;
+  border: none;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ml-2 {
+  margin-left: 10px;
+}
+
+
+@media screen and (max-width:1000px) {
+  .preference-container {
+    width: 90% !important;
+    margin: 1rem auto;
+    padding: 0 16px;
+    background-color: #1eca8b;
+    border-radius: 1rem;
+  }
+}
